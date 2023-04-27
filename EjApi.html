@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Ej api</title>
+    <script>
+        $(document).ready(function(){
+            $("#enviar").focusin(function(){
+                $.get("https://www.themealdb.com/api/json/v1/1/categories.php", function(data){
+                    $.each(data.categories,function(i,item){
+                        $("#categorias").append("<tr><td>"+ item.idCategory +"</td><td>"+ item.strCategory+
+                            "</td><td><img src='"+item.strCategoryThumb+ "'>"+
+                            "</td><td> "+ item.strCategoryDescription+"</td></tr>");
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class= "container">
+
+        <h2> Ej api de comidas</h2>
+        <input type="button" id="enviar" value="mostrar comidas" class="btn btn-success"><br>
+        <table class="table" id="categorias">
+            <thead>
+                <th> Id</th>
+                <th> Nombre</th>
+                <th> Imagen</th>
+                <th> Descripcion</th>
+
+            </thead>
+            <tbody>
+
+                
+            </tbody>
+
+
+        </table>
+
+    </div>
+    
+</body>
+</html>
